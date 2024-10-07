@@ -18,7 +18,7 @@ WORKDIR /app
 COPY --from=build /app/target/pipeline-0.0.1-SNAPSHOT.jar /app/app.jar
 
 # Expose the port that your Spring Boot app listens on
-EXPOSE 8080
+EXPOSE 8081
 
 # Command to run the Spring Boot application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
