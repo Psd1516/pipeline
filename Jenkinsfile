@@ -1,13 +1,20 @@
 pipeline {
     agent any
-
+     tools {
+        git 'git' // Ensure the name here matches what you configured in "Global Tool Configuration"
+    }
     environment {
         DOCKER_IMAGE = "psd2001/pipeline:latest"
         REPO_URL = "https://github.com/Psd1516/pipeline.git"
         DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
     }
-
+          
     stages {
+         stage('Checkout SCM') {
+            steps {
+                git branch: 'master', url: 'https://github.com/Psd1516/pipeline.git'
+            }
+         }
         stage('Clone Repository') {
             steps {
                 git url: "${REPO_URL}", branch: 'master'
