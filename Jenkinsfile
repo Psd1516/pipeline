@@ -5,14 +5,15 @@ pipeline {
         DOCKER_IMAGE = "psd2001/pipeline:latest"
         REPO_URL = "https://github.com/Psd1516/pipeline.git"
         DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
+        GIT_CREDENTIALS_ID = 'af21707d-4fcc-49a7-baea-056b406f11a6'
     }
           
     stages {
          stage('Checkout SCM') {
             steps {
-                git branch: 'master', url: 'https://github.com/Psd1516/pipeline.git'
+                git branch: 'master', url: "${REPO_URL}", credentialsId: "${GIT_CREDENTIALS_ID}"
             }
-         }
+        }
         stage('Clone Repository') {
             steps {
                 git url: "${REPO_URL}", branch: 'master'
