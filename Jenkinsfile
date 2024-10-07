@@ -50,6 +50,11 @@ pipeline {
                 sh "docker run -d -p 8081:8081 --name pipeline-app ${DOCKER_IMAGE}"
             }
         }
+        stage('Run Background Task') {
+            steps {
+                bat 'start your_background_task.bat'
+            }
+        }
     }
 
     post {
