@@ -35,7 +35,7 @@ pipeline {
 
       stage('Debug Docker Login') {
     steps {
-        sh "docker login -u psd2001 -p suresh2001@"
+        bat "docker login -u psd2001 -p suresh2001@"
     }
 }
 
